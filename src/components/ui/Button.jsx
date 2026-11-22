@@ -6,7 +6,7 @@ import { cx } from './cx.js'
 const VARIANTS = {
   primary: 'bg-navy-800 text-white shadow-sm hover:bg-navy-700 active:bg-navy-900',
   secondary: 'border border-navy-100 bg-white text-navy-800 shadow-sm hover:bg-navy-50',
-  accent: 'bg-emerald-600 text-white shadow-sm hover:bg-emerald-700 active:bg-emerald-800',
+  accent: 'bg-accent-600 text-white shadow-sm hover:bg-accent-700 active:bg-accent-800',
   ghost: 'text-navy-700 hover:bg-navy-50 hover:text-navy-900',
   danger: 'bg-red-600 text-white shadow-sm hover:bg-red-700 active:bg-red-800',
   success: 'border border-emerald-100 bg-emerald-50 text-emerald-700 hover:bg-emerald-100',

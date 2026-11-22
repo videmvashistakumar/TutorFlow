@@ -5,5 +5,6 @@ export const navigationItems = [
   { id: 'payments', label: 'Payments' },
   { id: 'cash-forecast', label: 'Cash Forecast' },
   { id: 'bills', label: 'Bills' },
+  { id: 'settings', label: 'Settings' },
 ]
 

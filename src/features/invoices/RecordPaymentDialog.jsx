@@ -1,6 +1,6 @@
 // Form inside the Record payment modal: amount (full or partial), date and payment method.
 import { useState } from 'react'
-import { formatCurrency, todayISO } from '../../lib/format.js'
+import { formatCurrency, getCurrencySymbol, todayISO } from '../../lib/format.js'
 import { Button, FormField, Input, Select } from '../../components/ui/index.js'
 import { PAYMENT_METHOD_OPTIONS, getAmountPaid, getRemaining } from './invoiceUtils.js'
 
@@ -59,7 +59,7 @@ export default function RecordPaymentDialog({ invoice, onRecord, onCancel }) {
         </dl>
 
         <FormField
-          label="Payment amount (₹)"
+          label={`Payment amount (${getCurrencySymbol()})`}
           htmlFor="payment-amount"
           required
           error={errors.amount}

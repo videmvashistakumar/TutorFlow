@@ -20,7 +20,7 @@ function controlTone(invalid) {
 
 export function Label({ htmlFor, required = false, className, children }) {
   return (
-    <label htmlFor={htmlFor} className={cx('block text-sm font-medium text-navy-800', className)}>
+    <label htmlFor={htmlFor} className={cx('block text-sm font-medium text-navy-800 dark:text-navy-100', className)}>
       {children}
       {required && <span className="ml-0.5 text-red-600" aria-hidden="true">*</span>}
     </label>

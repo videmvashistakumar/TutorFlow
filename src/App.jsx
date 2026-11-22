@@ -7,6 +7,7 @@ import InvoicesPage from './features/invoices/InvoicesPage.jsx'
 import BillsPage from './features/bills/BillsPage.jsx'
 import CashForecastPage from './features/cashForecast/CashForecastPage.jsx'
 import PaymentsPage from './features/payments/PaymentsPage.jsx'
+import SettingsPage from './features/settings/SettingsPage.jsx'
 import { navigationItems } from './config/navigation.js'
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
   else if (activeId === 'bills') page = <BillsPage />
   else if (activeId === 'cash-forecast') page = <CashForecastPage />
   else if (activeId === 'payments') page = <PaymentsPage />
+  else if (activeId === 'settings') page = <SettingsPage />
   else page = <ComingSoon title={activeItem ? activeItem.label : 'TutorFlow'} />
 
   return (

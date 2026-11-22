@@ -1,5 +1,6 @@
 // Invoice status, totals and number helpers.
 import { todayISO } from '../../lib/format.js'
+import { loadSettings } from '../../lib/settingsStore.js'
 
 export const INVOICE_STATUS = { DRAFT: 'Draft', SENT: 'Sent', PARTIAL: 'Partially Paid', PAID: 'Paid', OVERDUE: 'Overdue' }
 
@@ -55,7 +56,8 @@ export function isPartiallyPaid(invoice) {
 
 export function nextInvoiceNumber(invoices, issueDate) {
   const year = issueDate.slice(0, 4)
-  const prefix = `INV-${year}-`
+  const numberPrefix = loadSettings().invoicePrefs.numberPrefix || ''
+  const prefix = `${numberPrefix}INV-${year}-`
   const count = invoices.filter((inv) => String(inv.number).startsWith(prefix)).length
   return prefix + String(count + 1).padStart(3, '0')
 }

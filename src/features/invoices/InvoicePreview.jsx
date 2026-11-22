@@ -1,6 +1,7 @@
 // Invoice preview: printable document-style invoice with billed-to details, totals and payment history.
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { formatCurrency, formatDate } from '../../lib/format.js'
+import { loadSettings } from '../../lib/settingsStore.js'
 import { AlertTriangleIcon, Button, FileTextIcon, WalletIcon } from '../../components/ui/index.js'
 import {
   INVOICE_STATUS,
@@ -38,6 +39,14 @@ export default function InvoicePreview({ invoice, student, onRecordPayment, onCl
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
+  const settings = useMemo(() => loadSettings(), [])
+  const business = settings.business
+  const brandName = business.businessName || 'TutorFlow'
+  const footerText = business.invoiceFooter || settings.invoicePrefs.defaultFooter
+  const contactLines = [business.tutorName, business.phone, business.email, business.upiId, business.address].filter(
+    (line) => line && line.trim(),
+  )
+
   const status = getStatus(invoice)
   const paid = getAmountPaid(invoice)
   const remaining = getRemaining(invoice)
@@ -66,12 +75,21 @@ export default function InvoicePreview({ invoice, student, onRecordPayment, onCl
         {/* Document header: brand, invoice number and status. */}
         <div className="flex flex-col gap-4 border-b border-navy-100 px-6 py-6 sm:flex-row sm:items-start sm:justify-between sm:px-8">
           <div className="flex items-center gap-3">
-            <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-navy-800 text-white">
-              <FileTextIcon className="h-5 w-5" />
-            </span>
+            {business.logoDataUrl ? (
+              <img src={business.logoDataUrl} alt="" className="h-10 w-10 rounded-lg object-contain" />
+            ) : (
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-navy-800 text-white">
+                <FileTextIcon className="h-5 w-5" />
+              </span>
+            )}
             <div>
-              <p className="text-sm font-semibold text-navy-900">TutorFlow</p>
-              <p className="text-xs text-navy-500">Tuition invoice</p>
+              <p className="text-sm font-semibold text-navy-900">{brandName}</p>
+              <p className="text-xs text-navy-500">{business.invoiceBrandingText || 'Tuition invoice'}</p>
+              {contactLines.map((line) => (
+                <p key={line} className="text-xs text-navy-500">
+                  {line}
+                </p>
+              ))}
             </div>
           </div>
           <div className="text-sm sm:text-right">
@@ -177,6 +195,10 @@ export default function InvoicePreview({ invoice, student, onRecordPayment, onCl
             </dl>
           </div>
         </div>
+
+        {footerText && (
+          <div className="border-t border-navy-100 px-6 py-4 text-center text-xs text-navy-500 sm:px-8">{footerText}</div>
+        )}
 
         <div className="flex flex-wrap justify-end gap-3 border-t border-navy-100 bg-navy-50/40 px-6 py-4 sm:px-8 print:hidden">
           <Button variant="secondary" onClick={onClose}>

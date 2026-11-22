@@ -9,7 +9,7 @@ export default function AppLayout({ activeId, onSelect, children }) {
 
   return (
     <div className="flex min-h-screen flex-col text-navy-900">
-      <TopBar onToggleSidebar={() => setSidebarOpen((open) => !open)} onNavigate={onSelect} />
+      <TopBar activeId={activeId} onToggleSidebar={() => setSidebarOpen((open) => !open)} onNavigate={onSelect} />
       <div className="flex min-w-0 flex-1">
         <Sidebar
           isOpen={sidebarOpen}

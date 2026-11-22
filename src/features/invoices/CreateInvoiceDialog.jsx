@@ -1,6 +1,7 @@
 // Form inside the Create Invoice modal: choose a student, billing month, amount and due date.
 import { useState } from 'react'
-import { formatCurrency, todayISO } from '../../lib/format.js'
+import { formatCurrency, getCurrencySymbol, todayISO } from '../../lib/format.js'
+import { loadSettings } from '../../lib/settingsStore.js'
 import { Button, ClockIcon, FormField, Input, Select } from '../../components/ui/index.js'
 import { addDaysISO, getMonthlyFeeForStudent } from './invoiceUtils.js'
 
@@ -20,7 +21,9 @@ export default function CreateInvoiceDialog({ students, onCreate, onCancel }) {
   const [studentId, setStudentId] = useState('')
   const [yearMonth, setYearMonth] = useState(currentMonth)
   const [amount, setAmount] = useState('')
-  const [dueDate, setDueDate] = useState(addDaysISO(issueDate, DEFAULT_TERMS_DAYS))
+  const [dueDate, setDueDate] = useState(
+    addDaysISO(issueDate, loadSettings().invoicePrefs.defaultDueDays ?? DEFAULT_TERMS_DAYS),
+  )
   const [errors, setErrors] = useState({})
 
   const selectedStudent = students.find((s) => s.id === studentId) || null
@@ -110,7 +113,7 @@ export default function CreateInvoiceDialog({ students, onCreate, onCancel }) {
 
         <section className="space-y-4 border-t border-navy-100 pt-6">
           <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">Amount and due date</p>
-          <FormField label="Amount (₹)" htmlFor="invoice-amount" required error={errors.amount} hint={amountHint}>
+          <FormField label={`Amount (${getCurrencySymbol()})`} htmlFor="invoice-amount" required error={errors.amount} hint={amountHint}>
             <Input
               id="invoice-amount"
               type="number"

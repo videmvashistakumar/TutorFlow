@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { FEE_TYPE_OPTIONS, STATUS_OPTIONS } from './studentUtils.js'
 import { Button, FormField, Input, Select } from '../../components/ui/index.js'
+import { getCurrencySymbol } from '../../lib/format.js'
 
 function FormSection({ title, children }) {
   return (
@@ -114,7 +115,7 @@ export default function AddStudentForm({ onSave, onCancel }) {
               ))}
             </Select>
           </FormField>
-          <FormField label="Fee amount (₹)" htmlFor="fee-amount" required error={errors.feeAmount}>
+          <FormField label={`Fee amount (${getCurrencySymbol()})`} htmlFor="fee-amount" required error={errors.feeAmount}>
             <Input
               id="fee-amount"
               type="number"

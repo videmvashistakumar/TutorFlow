@@ -1,6 +1,6 @@
 // Form inside the Edit Invoice modal: edit student, period, amount and dates, then review before/after before saving.
 import { useState } from 'react'
-import { formatCurrency, formatDate } from '../../lib/format.js'
+import { formatCurrency, formatDate, getCurrencySymbol } from '../../lib/format.js'
 import {
   Badge,
   Button,
@@ -243,7 +243,7 @@ export default function EditInvoiceDialog({ invoice, students, onSave, onCancel 
         <section className="space-y-4 border-t border-navy-100 pt-6">
           <p className="text-xs font-semibold uppercase tracking-wider text-navy-500">Amount</p>
           <FormField
-            label="Amount (₹)"
+            label={`Amount (${getCurrencySymbol()})`}
             htmlFor="edit-invoice-amount"
             required
             error={errors.amount}
