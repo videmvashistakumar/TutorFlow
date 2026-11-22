@@ -1,0 +1,23 @@
+{
+  "frontend": {
+    "framework": "Next.js",
+    "language": "TypeScript",
+    "version": "15"
+  },
+  "backend": {
+    "framework": "Next.js",
+    "language": "TypeScript",
+    "version": "15"
+  },
+  "database": {
+    "system": "postgresql",
+    "orm": "prisma",
+    "version": "16"
+  },
+  "package_manager": "npm",
+  "testing": {
+    "unit": "Vitest",
+    "e2e": "Playwright"
+  },
+  "source_files": []
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 2,
+  "createdAt": "2026-11-21T05:12:16.381Z",
+  "updatedAt": "2026-11-22T10:42:46.910Z",
+  "phases": {
+    "architecture": {
+      "updatedAt": "2026-11-22T07:09:44.886Z",
+      "committed": false
+    },
+    "prd": {
+      "updatedAt": "2026-11-22T10:42:46.910Z",
+      "committed": false
+    },
+    "apis": {
+      "updatedAt": "2026-11-22T07:09:49.763Z",
+      "committed": false
+    },
+    "brand": {
+      "updatedAt": "2026-11-22T07:09:49.871Z",
+      "committed": false
+    },
+    "schema": {
+      "updatedAt": "2026-11-22T07:09:50.217Z",
+      "committed": false
+    },
+    "ble": {
+      "updatedAt": "2026-11-22T07:09:53.428Z",
+      "committed": false
+    },
+    "stack": {
+      "updatedAt": "2026-11-22T07:09:58.334Z",
+      "committed": false
+    },
+    "persona": {
+      "updatedAt": "2026-11-22T07:13:00.662Z",
+      "committed": false
+    },
+    "atlas": {
+      "updatedAt": "2026-11-22T07:13:01.240Z",
+      "committed": false
+    }
+  },
+  "settings": {},
+  "flow": {
+    "architecture": {
+      "hash": "b1c7c8c6574daa37",
+      "parts": {
+        "architecture": "39d9ee486a44c1eb"
+      },
+      "builtFrom": {}
+    },
+    "prd": {
+      "hash": "9d848b0fb3d42d21",
+      "builtFrom": {}
+    },
+    "apis": {
+      "hash": "fda17b42ea971d14",
+      "builtFrom": {
+        "prd": "9d848b0fb3d42d21"
+      }
+    },
+    "brand": {
+      "hash": "58bb47ddc21b60c1",
+      "builtFrom": {
+        "prd": "9d848b0fb3d42d21"
+      }
+    },
+    "schema": {
+      "hash": "23cc3e3d39e25a14",
+      "builtFrom": {
+        "prd": "9d848b0fb3d42d21",
+        "apis": "fda17b42ea971d14",
+        "ble": "47f7fc2aa32bf5a4"
+      }
+    },
+    "ble": {
+      "hash": "47f7fc2aa32bf5a4",
+      "builtFrom": {
+        "prd": "9d848b0fb3d42d21",
+        "apis": "fda17b42ea971d14"
+      }
+    },
+    "stack": {
+      "hash": "82862b6c275e078f",
+      "parts": {
+        "databaseKind": "684a0cfa7ca53b79"
+      },
+      "builtFrom": {
+        "prd": "9d848b0fb3d42d21",
+        "architecture": "296b96a1c1d7650d"
+      }
+    },
+    "persona": {
+      "hash": "5e563b19d6fc0704",
+      "builtFrom": {
+        "prd": "9d848b0fb3d42d21"
+      }
+    },
+    "atlas": {
+      "hash": "40ef6ad1152af196",
+      "builtFrom": {
+        "prd": "9d848b0fb3d42d21",
+        "persona": "5e563b19d6fc0704",
+        "stack": "a43f1be7b52d5edb",
+        "apis": "fda17b42ea971d14",
+        "ble": "47f7fc2aa32bf5a4",
+        "schema": "23cc3e3d39e25a14"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "colors": {
+    "primary": "#8B5CF6",
+    "secondary": "#06B6D4",
+    "accent": "#F59E0B",
+    "bg": "#0F0F14",
+    "surface": "#1A1A22",
+    "text": "#F5F5F7",
+    "muted": "#8B8B95",
+    "success": "#10B981",
+    "danger": "#EF4444"
+  },
+  "typography": {
+    "font_family": "Geist",
+    "font_sizes": [],
+    "font_weights": []
+  },
+  "source_files": []
+}
